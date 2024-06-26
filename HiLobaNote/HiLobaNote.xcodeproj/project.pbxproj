@@ -8,20 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		D255489C2C2C7A450016A7C0 /* HiLobaNoteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D255489B2C2C7A450016A7C0 /* HiLobaNoteApp.swift */; };
-		D255489E2C2C7A450016A7C0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D255489D2C2C7A450016A7C0 /* ContentView.swift */; };
+		D255489E2C2C7A450016A7C0 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D255489D2C2C7A450016A7C0 /* OnboardingView.swift */; };
 		D25548A42C2C7A470016A7C0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D25548A32C2C7A470016A7C0 /* Preview Assets.xcassets */; };
 		D25548AB2C2C7A590016A7C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D25548AA2C2C7A590016A7C0 /* Assets.xcassets */; };
 		D2BDFC1B2C2C7B8E00384DFB /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDFC1A2C2C7B8E00384DFB /* Color+Extension.swift */; };
+		D2BDFC1E2C2C7D0A00384DFB /* OnboardingContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDFC1D2C2C7D0A00384DFB /* OnboardingContent.swift */; };
+		D2BDFC202C2C7E4D00384DFB /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDFC1F2C2C7E4D00384DFB /* OnboardingViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D25548982C2C7A450016A7C0 /* HiLobaNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HiLobaNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D255489B2C2C7A450016A7C0 /* HiLobaNoteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiLobaNoteApp.swift; sourceTree = "<group>"; };
-		D255489D2C2C7A450016A7C0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D255489D2C2C7A450016A7C0 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		D25548A12C2C7A470016A7C0 /* HiLobaNote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HiLobaNote.entitlements; sourceTree = "<group>"; };
 		D25548A32C2C7A470016A7C0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D25548AA2C2C7A590016A7C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../Desktop/Assets.xcassets; sourceTree = "<group>"; };
 		D2BDFC1A2C2C7B8E00384DFB /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		D2BDFC1D2C2C7D0A00384DFB /* OnboardingContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContent.swift; sourceTree = "<group>"; };
+		D2BDFC1F2C2C7E4D00384DFB /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +64,6 @@
 				D2BDFC122C2C7AD100384DFB /* Core */,
 				D2BDFC112C2C7ACB00384DFB /* App */,
 				D25548AA2C2C7A590016A7C0 /* Assets.xcassets */,
-				D255489D2C2C7A450016A7C0 /* ContentView.swift */,
 				D25548A12C2C7A470016A7C0 /* HiLobaNote.entitlements */,
 				D25548A22C2C7A470016A7C0 /* Preview Content */,
 			);
@@ -126,6 +129,7 @@
 		D2BDFC172C2C7B2300384DFB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D2BDFC1C2C2C7CD900384DFB /* Onboarding */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -133,6 +137,8 @@
 		D2BDFC182C2C7B4900384DFB /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				D255489D2C2C7A450016A7C0 /* OnboardingView.swift */,
+				D2BDFC1F2C2C7E4D00384DFB /* OnboardingViewModel.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -142,6 +148,14 @@
 			children = (
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		D2BDFC1C2C2C7CD900384DFB /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				D2BDFC1D2C2C7D0A00384DFB /* OnboardingContent.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,7 +228,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D255489E2C2C7A450016A7C0 /* ContentView.swift in Sources */,
+				D2BDFC202C2C7E4D00384DFB /* OnboardingViewModel.swift in Sources */,
+				D2BDFC1E2C2C7D0A00384DFB /* OnboardingContent.swift in Sources */,
+				D255489E2C2C7A450016A7C0 /* OnboardingView.swift in Sources */,
 				D2BDFC1B2C2C7B8E00384DFB /* Color+Extension.swift in Sources */,
 				D255489C2C2C7A450016A7C0 /* HiLobaNoteApp.swift in Sources */,
 			);
