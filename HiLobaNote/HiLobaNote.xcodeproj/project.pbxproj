@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D2517FBC2C2D33070056684F /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2517FBB2C2D33070056684F /* Date+Extension.swift */; };
 		D255489C2C2C7A450016A7C0 /* HiLobaNoteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D255489B2C2C7A450016A7C0 /* HiLobaNoteApp.swift */; };
 		D255489E2C2C7A450016A7C0 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D255489D2C2C7A450016A7C0 /* OnboardingView.swift */; };
 		D25548A42C2C7A470016A7C0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D25548A32C2C7A470016A7C0 /* Preview Assets.xcassets */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D2517FBB2C2D33070056684F /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Date+Extension.swift"; path = "../../../../../../Documents/Date+Extension.swift"; sourceTree = "<group>"; };
 		D25548982C2C7A450016A7C0 /* HiLobaNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HiLobaNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D255489B2C2C7A450016A7C0 /* HiLobaNoteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiLobaNoteApp.swift; sourceTree = "<group>"; };
 		D255489D2C2C7A450016A7C0 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -70,7 +72,6 @@
 			children = (
 				D2BDFC172C2C7B2300384DFB /* Model */,
 				D2BDFC142C2C7ADC00384DFB /* Feature */,
-				D2BDFC132C2C7AD600384DFB /* Component */,
 				D2BDFC122C2C7AD100384DFB /* Core */,
 				D2BDFC112C2C7ACB00384DFB /* App */,
 				D25548AA2C2C7A590016A7C0 /* Assets.xcassets */,
@@ -100,16 +101,8 @@
 			isa = PBXGroup;
 			children = (
 				D2BDFC162C2C7B1500384DFB /* Extension */,
-				D2BDFC152C2C7B0A00384DFB /* Service */,
 			);
 			path = Core;
-			sourceTree = "<group>";
-		};
-		D2BDFC132C2C7AD600384DFB /* Component */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Component;
 			sourceTree = "<group>";
 		};
 		D2BDFC142C2C7ADC00384DFB /* Feature */ = {
@@ -123,17 +116,11 @@
 			path = Feature;
 			sourceTree = "<group>";
 		};
-		D2BDFC152C2C7B0A00384DFB /* Service */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
 		D2BDFC162C2C7B1500384DFB /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				D2BDFC1A2C2C7B8E00384DFB /* Color+Extension.swift */,
+				D2517FBB2C2D33070056684F /* Date+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -268,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2BDFC202C2C7E4D00384DFB /* OnboardingViewModel.swift in Sources */,
+				D2517FBC2C2D33070056684F /* Date+Extension.swift in Sources */,
 				D2BDFC2A2C2C8AF100384DFB /* MemoView.swift in Sources */,
 				D2BDFC2D2C2C8B0A00384DFB /* TodoView.swift in Sources */,
 				D2BDFC1E2C2C7D0A00384DFB /* OnboardingContent.swift in Sources */,
