@@ -11,9 +11,9 @@
 		D2517FC02C2D345E0056684F /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2517FBF2C2D345E0056684F /* CustomNavigationBar.swift */; };
 		D2517FC22C2D34840056684F /* NavigationBthType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2517FC12C2D34840056684F /* NavigationBthType.swift */; };
 		D2517FC52C2D36E40056684F /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2517FC42C2D36E40056684F /* Todo.swift */; };
-		D2517FC72C2D377B0056684F /* TodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2517FC62C2D377B0056684F /* TodoViewModel.swift */; };
 		D2517FC92C2D379B0056684F /* TodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2517FC82C2D379B0056684F /* TodoListView.swift */; };
 		D2517FCB2C2D37A90056684F /* TodoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2517FCA2C2D37A90056684F /* TodoListViewModel.swift */; };
+		D2517FCD2C2D40860056684F /* TodoVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2517FCC2C2D40860056684F /* TodoVIewModel.swift */; };
 		D255489C2C2C7A450016A7C0 /* HiLobaNoteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D255489B2C2C7A450016A7C0 /* HiLobaNoteApp.swift */; };
 		D255489E2C2C7A450016A7C0 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D255489D2C2C7A450016A7C0 /* OnboardingView.swift */; };
 		D25548A42C2C7A470016A7C0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D25548A32C2C7A470016A7C0 /* Preview Assets.xcassets */; };
@@ -33,9 +33,9 @@
 		D2517FBF2C2D345E0056684F /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomNavigationBar.swift; path = ../../../../../../Documents/CustomNavigationBar.swift; sourceTree = "<group>"; };
 		D2517FC12C2D34840056684F /* NavigationBthType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NavigationBthType.swift; path = ../../../../../../Documents/NavigationBthType.swift; sourceTree = "<group>"; };
 		D2517FC42C2D36E40056684F /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
-		D2517FC62C2D377B0056684F /* TodoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewModel.swift; sourceTree = "<group>"; };
 		D2517FC82C2D379B0056684F /* TodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListView.swift; sourceTree = "<group>"; };
 		D2517FCA2C2D37A90056684F /* TodoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewModel.swift; sourceTree = "<group>"; };
+		D2517FCC2C2D40860056684F /* TodoVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoVIewModel.swift; sourceTree = "<group>"; };
 		D25548982C2C7A450016A7C0 /* HiLobaNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HiLobaNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D255489B2C2C7A450016A7C0 /* HiLobaNoteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiLobaNoteApp.swift; sourceTree = "<group>"; };
 		D255489D2C2C7A450016A7C0 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -219,9 +219,9 @@
 			isa = PBXGroup;
 			children = (
 				D2BDFC2C2C2C8B0A00384DFB /* TodoView.swift */,
-				D2517FC62C2D377B0056684F /* TodoViewModel.swift */,
 				D2517FC82C2D379B0056684F /* TodoListView.swift */,
 				D2517FCA2C2D37A90056684F /* TodoListViewModel.swift */,
+				D2517FCC2C2D40860056684F /* TodoVIewModel.swift */,
 			);
 			path = Todo;
 			sourceTree = "<group>";
@@ -298,9 +298,9 @@
 			files = (
 				D2517FC02C2D345E0056684F /* CustomNavigationBar.swift in Sources */,
 				D2BDFC202C2C7E4D00384DFB /* OnboardingViewModel.swift in Sources */,
+				D2517FCD2C2D40860056684F /* TodoVIewModel.swift in Sources */,
 				D2517FBC2C2D33070056684F /* Date+Extension.swift in Sources */,
 				D2517FCB2C2D37A90056684F /* TodoListViewModel.swift in Sources */,
-				D2517FC72C2D377B0056684F /* TodoViewModel.swift in Sources */,
 				D2BDFC2A2C2C8AF100384DFB /* MemoView.swift in Sources */,
 				D2BDFC2D2C2C8B0A00384DFB /* TodoView.swift in Sources */,
 				D2BDFC1E2C2C7D0A00384DFB /* OnboardingContent.swift in Sources */,
