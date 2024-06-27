@@ -8,17 +8,35 @@
 import SwiftUI
 
 struct OnboardingView: View {
+    @StateObject private var pathModel = PathModel()
     @StateObject private var onboardingViewModel = OnboardingViewModel()
     
     var body: some View {
         //TODO: 화면 전환 구현 필요
-        OnboardingContentView(onboardingViewModel: onboardingViewModel)
         
-        Spacer()
+        NavigationStack(path: $pathModel.paths) {
+            OnboardingContentView(onboardingViewModel: onboardingViewModel)
+                .navigationDestination(
+                    for: PathType.self,
+                    destination: { pathType in
+                        switch pathType {
+                        case .homeView:
+                            HomeView()
+                                .navigationBarBackButtonHidden()
+                        case .todoView:
+                            TodoView()
+                                .navigationBarBackButtonHidden()
+                        case .memoView:
+                            MemoView()
+                                .navigationBarBackButtonHidden()
+                        }
+                    }
+                )
+        }
+        .environmentObject(pathModel)
         
-        StartButton()
+        //OnboardingContentView(onboardingViewModel: onboardingViewModel)
     }
-        .edgesIgnoringSafeArea(.top)
 }
 
 // MARK: - 온보딩 컨텐츠 뷰
@@ -32,11 +50,11 @@ private struct OnboardingContentView: View {
     
     fileprivate var body: some View {
         VStack {
-            // 온보딩 셀 리스트 뷰
             OnboardingCellListView(onboardingViewModel: onboardingViewModel)
-            
-            // 시작버튼 뷰
+            Spacer()
+            StartButton()
         }
+        .ignoresSafeArea()
     }
 }
 
@@ -46,7 +64,10 @@ private struct OnboardingCellListView: View {
     @ObservedObject private var onboardingViewModel: OnboardingViewModel
     @State private var selectedIndex: Int
     
-    fileprivate init(onboardingViewModel: OnboardingViewModel, selectedIndex: Int = 0) {
+    fileprivate init(
+        onboardingViewModel: OnboardingViewModel,
+        selectedIndex: Int = 0
+    ) {
         self.onboardingViewModel = onboardingViewModel
         self.selectedIndex = selectedIndex
     }
@@ -60,7 +81,8 @@ private struct OnboardingCellListView: View {
             }
         }
         .tabViewStyle(.page(indexDisplayMode: .never))
-        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 1.5)
+        .frame(
+            width: 393, height: 852 / 1.5)
         .background(
             selectedIndex % 2 == 0
             ? Color.customSky
@@ -113,9 +135,11 @@ private struct OnboardingCellView: View {
 //MARK: 시작하기 버튼
 
 private struct StartButton: View {
+    @EnvironmentObject private var pathModel: PathModel
+    
     fileprivate var body: some View {
         Button(
-            action: {},
+            action: { pathModel.paths.append(.homeView)},
             label: {
                 HStack {
                     Text("시작하기")

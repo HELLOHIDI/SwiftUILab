@@ -10,15 +10,15 @@ import Foundation
 import SwiftUI
 
 extension Color {
-  static let customBackgroundGreen = Color("customBackgroundGreen")
-  static let customBlack = Color("customBlack")
-  static let customCoolGray = Color("customCoolGray")
-  static let customGray0 = Color("customGray0")
-  static let customGray1 = Color("customGray1")
-  static let customGray2 = Color("customGray2")
-  static let customGreen = Color("customGreen")
-  static let customIconGray = Color("customIconGray")
-  static let customOrange = Color("customOrange")
-  static let customSky = Color("customSky")
-  static let customWhite = Color("customWhite")
+    static let customBackgroundGreen = Color("bg-green")
+    static let customBlack = Color(.black)
+    static let customCoolGray = Color("gray-0-cool")
+    static let customGray0 = Color("gray-0")
+    static let customGray1 = Color("gray-1")
+    static let customGray2 = Color("gray-2")
+    static let customGreen = Color("key-color")
+    static let customIconGray = Color("icon-on")
+    static let customOrange = Color("point")
+    static let customSky = Color("bg-sky")
+    static let customWhite = Color(.white)
 }
