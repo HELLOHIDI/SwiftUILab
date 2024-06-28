@@ -27,6 +27,7 @@ struct MemoView: View {
                         } else {
                             memoListViewModel.update(memoViewModel.memo)
                         }
+                        pathModel.paths.removeLast()
                     }, rightBtnType: isCreateMode ? .create : .complete
                 )
                 
@@ -144,6 +145,4 @@ private struct RemoveMemoBtnView: View {
             )
         )
     )
-    .environmentObject(PathModel())
-    .environmentObject(MemoListViewModel())
 }
