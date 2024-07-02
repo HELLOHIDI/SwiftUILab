@@ -22,6 +22,9 @@
 		D255489E2C2C7A450016A7C0 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D255489D2C2C7A450016A7C0 /* OnboardingView.swift */; };
 		D25548A42C2C7A470016A7C0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D25548A32C2C7A470016A7C0 /* Preview Assets.xcassets */; };
 		D25548AB2C2C7A590016A7C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D25548AA2C2C7A590016A7C0 /* Assets.xcassets */; };
+		D289DCAC2C33CAC600AF1156 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D289DCAB2C33CAC600AF1156 /* Double+Extension.swift */; };
+		D289DCAF2C33CB3C00AF1156 /* VoiceRecorderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D289DCAE2C33CB3C00AF1156 /* VoiceRecorderViewModel.swift */; };
+		D289DCB12C33CB4900AF1156 /* VoiceRecorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D289DCB02C33CB4900AF1156 /* VoiceRecorderView.swift */; };
 		D2BDFC1B2C2C7B8E00384DFB /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDFC1A2C2C7B8E00384DFB /* Color+Extension.swift */; };
 		D2BDFC1E2C2C7D0A00384DFB /* OnboardingContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDFC1D2C2C7D0A00384DFB /* OnboardingContent.swift */; };
 		D2BDFC202C2C7E4D00384DFB /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDFC1F2C2C7E4D00384DFB /* OnboardingViewModel.swift */; };
@@ -50,6 +53,9 @@
 		D25548A12C2C7A470016A7C0 /* HiLobaNote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HiLobaNote.entitlements; sourceTree = "<group>"; };
 		D25548A32C2C7A470016A7C0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D25548AA2C2C7A590016A7C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../Desktop/Assets.xcassets; sourceTree = "<group>"; };
+		D289DCAB2C33CAC600AF1156 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
+		D289DCAE2C33CB3C00AF1156 /* VoiceRecorderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceRecorderViewModel.swift; sourceTree = "<group>"; };
+		D289DCB02C33CB4900AF1156 /* VoiceRecorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceRecorderView.swift; sourceTree = "<group>"; };
 		D2BDFC1A2C2C7B8E00384DFB /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		D2BDFC1D2C2C7D0A00384DFB /* OnboardingContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContent.swift; sourceTree = "<group>"; };
 		D2BDFC1F2C2C7E4D00384DFB /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
@@ -161,6 +167,15 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		D289DCAD2C33CB2000AF1156 /* VoiceRecorder */ = {
+			isa = PBXGroup;
+			children = (
+				D289DCAE2C33CB3C00AF1156 /* VoiceRecorderViewModel.swift */,
+				D289DCB02C33CB4900AF1156 /* VoiceRecorderView.swift */,
+			);
+			path = VoiceRecorder;
+			sourceTree = "<group>";
+		};
 		D2BDFC112C2C7ACB00384DFB /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +195,7 @@
 		D2BDFC142C2C7ADC00384DFB /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				D289DCAD2C33CB2000AF1156 /* VoiceRecorder */,
 				D2BDFC2B2C2C8AFD00384DFB /* TodoList */,
 				D2BDFC282C2C8AE300384DFB /* MemoList */,
 				D2BDFC192C2C7B5100384DFB /* Home */,
@@ -193,6 +209,7 @@
 			children = (
 				D2BDFC1A2C2C7B8E00384DFB /* Color+Extension.swift */,
 				D2517FBB2C2D33070056684F /* Date+Extension.swift */,
+				D289DCAB2C33CAC600AF1156 /* Double+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -341,6 +358,7 @@
 				D2BDFC2A2C2C8AF100384DFB /* MemoView.swift in Sources */,
 				D2BDFC2D2C2C8B0A00384DFB /* TodoView.swift in Sources */,
 				D2BDFC1E2C2C7D0A00384DFB /* OnboardingContent.swift in Sources */,
+				D289DCAF2C33CB3C00AF1156 /* VoiceRecorderViewModel.swift in Sources */,
 				D255489E2C2C7A450016A7C0 /* OnboardingView.swift in Sources */,
 				D2517FC52C2D36E40056684F /* Todo.swift in Sources */,
 				D2BDFC1B2C2C7B8E00384DFB /* Color+Extension.swift in Sources */,
@@ -348,6 +366,8 @@
 				D2BDFC252C2C89DA00384DFB /* PathModel.swift in Sources */,
 				D21BE0192C2EFC460046F281 /* NavigationBtnType.swift in Sources */,
 				D2BDFC272C2C8ADE00384DFB /* HomeView.swift in Sources */,
+				D289DCB12C33CB4900AF1156 /* VoiceRecorderView.swift in Sources */,
+				D289DCAC2C33CAC600AF1156 /* Double+Extension.swift in Sources */,
 				D21BE01C2C2EFF4A0046F281 /* Memo.swift in Sources */,
 				D21BE01F2C2EFFE40046F281 /* MemoViewModel.swift in Sources */,
 				D2BDFC232C2C89B400384DFB /* Path.swift in Sources */,
