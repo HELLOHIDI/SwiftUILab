@@ -10,12 +10,16 @@ import SwiftUI
 struct OnboardingView: View {
     @StateObject private var pathModel = PathModel()
     @StateObject private var onboardingViewModel = OnboardingViewModel()
+    @StateObject private var todoListViewModel = TodoListViewModel()
+    @StateObject private var memoListViewModel = MemoListViewModel()
     
     var body: some View {
         //TODO: 화면 전환 구현 필요
         
         NavigationStack(path: $pathModel.paths) {
-            OnboardingContentView(onboardingViewModel: onboardingViewModel)
+//            OnboardingContentView(onboardingViewModel: onboardingViewModel)
+            MemoListView()
+                .environmentObject(memoListViewModel)
                 .navigationDestination(
                     for: PathType.self,
                     destination: { pathType in
@@ -26,9 +30,16 @@ struct OnboardingView: View {
                         case .todoView:
                             TodoView()
                                 .navigationBarBackButtonHidden()
-                        case .memoView:
-                            MemoView()
+                                .environmentObject(todoListViewModel)
+                        case let .memoView(isCreateMode, memo):
+                            MemoView(
+                                memoViewModel: isCreateMode
+                                ? .init(memo: .init(title: "", content: "", date: Date()))
+                                : .init(memo: memo ?? .init(title: "", content: "", date: Date()))
+                                , isCreateMode: isCreateMode
+                            )
                                 .navigationBarBackButtonHidden()
+                                .environmentObject(memoListViewModel)
                         }
                     }
                 )

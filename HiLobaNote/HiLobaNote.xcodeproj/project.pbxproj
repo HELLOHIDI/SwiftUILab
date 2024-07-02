@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		D21BE0172C2EFC2C0046F281 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BE0162C2EFC2C0046F281 /* CustomNavigationBar.swift */; };
 		D21BE0192C2EFC460046F281 /* NavigationBtnType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BE0182C2EFC460046F281 /* NavigationBtnType.swift */; };
+		D21BE01C2C2EFF4A0046F281 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BE01B2C2EFF4A0046F281 /* Memo.swift */; };
+		D21BE01F2C2EFFE40046F281 /* MemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BE01E2C2EFFE40046F281 /* MemoViewModel.swift */; };
+		D21BE0232C2EFFFF0046F281 /* MemoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BE0222C2EFFFF0046F281 /* MemoListView.swift */; };
+		D21BE0252C2F000B0046F281 /* MemoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BE0242C2F000B0046F281 /* MemoListViewModel.swift */; };
 		D2517FBC2C2D33070056684F /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2517FBB2C2D33070056684F /* Date+Extension.swift */; };
 		D2517FC52C2D36E40056684F /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2517FC42C2D36E40056684F /* Todo.swift */; };
 		D2517FC92C2D379B0056684F /* TodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2517FC82C2D379B0056684F /* TodoListView.swift */; };
@@ -31,6 +35,10 @@
 /* Begin PBXFileReference section */
 		D21BE0162C2EFC2C0046F281 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		D21BE0182C2EFC460046F281 /* NavigationBtnType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBtnType.swift; sourceTree = "<group>"; };
+		D21BE01B2C2EFF4A0046F281 /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
+		D21BE01E2C2EFFE40046F281 /* MemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoViewModel.swift; sourceTree = "<group>"; };
+		D21BE0222C2EFFFF0046F281 /* MemoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListView.swift; sourceTree = "<group>"; };
+		D21BE0242C2F000B0046F281 /* MemoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListViewModel.swift; sourceTree = "<group>"; };
 		D2517FBB2C2D33070056684F /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Date+Extension.swift"; path = "../../../../../../Documents/Date+Extension.swift"; sourceTree = "<group>"; };
 		D2517FC42C2D36E40056684F /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		D2517FC82C2D379B0056684F /* TodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListView.swift; sourceTree = "<group>"; };
@@ -78,6 +86,32 @@
 				D21BE0182C2EFC460046F281 /* NavigationBtnType.swift */,
 			);
 			path = NavigationBar;
+			sourceTree = "<group>";
+		};
+		D21BE01A2C2EFF390046F281 /* Memo */ = {
+			isa = PBXGroup;
+			children = (
+				D21BE01B2C2EFF4A0046F281 /* Memo.swift */,
+			);
+			path = Memo;
+			sourceTree = "<group>";
+		};
+		D21BE01D2C2EFFD80046F281 /* Memo */ = {
+			isa = PBXGroup;
+			children = (
+				D2BDFC292C2C8AF100384DFB /* MemoView.swift */,
+				D21BE01E2C2EFFE40046F281 /* MemoViewModel.swift */,
+			);
+			path = Memo;
+			sourceTree = "<group>";
+		};
+		D21BE0262C2F00170046F281 /* Todo */ = {
+			isa = PBXGroup;
+			children = (
+				D2517FCC2C2D40860056684F /* TodoVIewModel.swift */,
+				D2BDFC2C2C2C8B0A00384DFB /* TodoView.swift */,
+			);
+			path = Todo;
 			sourceTree = "<group>";
 		};
 		D2517FC32C2D36D60056684F /* Todo */ = {
@@ -146,8 +180,8 @@
 		D2BDFC142C2C7ADC00384DFB /* Feature */ = {
 			isa = PBXGroup;
 			children = (
-				D2BDFC2B2C2C8AFD00384DFB /* Todo */,
-				D2BDFC282C2C8AE300384DFB /* Memo */,
+				D2BDFC2B2C2C8AFD00384DFB /* TodoList */,
+				D2BDFC282C2C8AE300384DFB /* MemoList */,
 				D2BDFC192C2C7B5100384DFB /* Home */,
 				D2BDFC182C2C7B4900384DFB /* Onboarding */,
 			);
@@ -166,6 +200,7 @@
 		D2BDFC172C2C7B2300384DFB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D21BE01A2C2EFF390046F281 /* Memo */,
 				D2517FC32C2D36D60056684F /* Todo */,
 				D2BDFC212C2C89AB00384DFB /* Path */,
 				D2BDFC1C2C2C7CD900384DFB /* Onboarding */,
@@ -207,23 +242,24 @@
 			path = Path;
 			sourceTree = "<group>";
 		};
-		D2BDFC282C2C8AE300384DFB /* Memo */ = {
+		D2BDFC282C2C8AE300384DFB /* MemoList */ = {
 			isa = PBXGroup;
 			children = (
-				D2BDFC292C2C8AF100384DFB /* MemoView.swift */,
+				D21BE01D2C2EFFD80046F281 /* Memo */,
+				D21BE0222C2EFFFF0046F281 /* MemoListView.swift */,
+				D21BE0242C2F000B0046F281 /* MemoListViewModel.swift */,
 			);
-			path = Memo;
+			path = MemoList;
 			sourceTree = "<group>";
 		};
-		D2BDFC2B2C2C8AFD00384DFB /* Todo */ = {
+		D2BDFC2B2C2C8AFD00384DFB /* TodoList */ = {
 			isa = PBXGroup;
 			children = (
-				D2BDFC2C2C2C8B0A00384DFB /* TodoView.swift */,
+				D21BE0262C2F00170046F281 /* Todo */,
 				D2517FC82C2D379B0056684F /* TodoListView.swift */,
 				D2517FCA2C2D37A90056684F /* TodoListViewModel.swift */,
-				D2517FCC2C2D40860056684F /* TodoVIewModel.swift */,
 			);
-			path = Todo;
+			path = TodoList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,6 +337,7 @@
 				D2517FBC2C2D33070056684F /* Date+Extension.swift in Sources */,
 				D2517FCB2C2D37A90056684F /* TodoListViewModel.swift in Sources */,
 				D21BE0172C2EFC2C0046F281 /* CustomNavigationBar.swift in Sources */,
+				D21BE0252C2F000B0046F281 /* MemoListViewModel.swift in Sources */,
 				D2BDFC2A2C2C8AF100384DFB /* MemoView.swift in Sources */,
 				D2BDFC2D2C2C8B0A00384DFB /* TodoView.swift in Sources */,
 				D2BDFC1E2C2C7D0A00384DFB /* OnboardingContent.swift in Sources */,
@@ -311,7 +348,10 @@
 				D2BDFC252C2C89DA00384DFB /* PathModel.swift in Sources */,
 				D21BE0192C2EFC460046F281 /* NavigationBtnType.swift in Sources */,
 				D2BDFC272C2C8ADE00384DFB /* HomeView.swift in Sources */,
+				D21BE01C2C2EFF4A0046F281 /* Memo.swift in Sources */,
+				D21BE01F2C2EFFE40046F281 /* MemoViewModel.swift in Sources */,
 				D2BDFC232C2C89B400384DFB /* Path.swift in Sources */,
+				D21BE0232C2EFFFF0046F281 /* MemoListView.swift in Sources */,
 				D255489C2C2C7A450016A7C0 /* HiLobaNoteApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -16,7 +16,7 @@ class TodoListViewModel: ObservableObject {
     var removeTodosCount: Int { // 삭제할 투두개수
         return removeTodos.count
     }
-    var naigationBarRightBtnMode: NavigationBthType { // 네비게이션 모드
+    var naigationBarRightBtnMode: NavigationBtnType { // 네비게이션 모드
         isEditTodoMode ? .complete : .edit
     }
     
