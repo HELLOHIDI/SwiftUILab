@@ -8,28 +8,26 @@
 import AVFoundation
 
 class VoiceRecorderViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
-    @Published var isDisplayRemoveVoiceRecorderAlert: Bool
-    @Published var isDisplayAlert: Bool
-    @Published var alertMessage: String
+    @Published var isDisplayRemoveVoiceRecorderAlert: Bool // 녹음 삭제 alert 여부
+    @Published var isDisplayAlert: Bool // alert 여부
+    @Published var alertMessage: String // alert 메세지
     
     //음성메모 녹음 관련 프로퍼티
     
-    var audioRecorder: AVAudioRecorder?
-    @Published var isRecording: Bool
+    var audioRecorder: AVAudioRecorder? // 음성메모 녹음 관련 프로퍼티
+    @Published var isRecording: Bool // 녹음중인지
     
     //음성메모 재생 관련 프로퍼티
     
-    var audioPlayer: AVAudioPlayer?
-    @Published var isPlaying: Bool
-    @Published var isPaused: Bool
-    @Published var playedTime: TimeInterval
-    private var progressTimer: Timer?
+    var audioPlayer: AVAudioPlayer? // 음성메모 재생 관련 프로퍼티
+    @Published var isPlaying: Bool // 재생중인지
+    @Published var isPaused: Bool // 정지중인지
+    @Published var playedTime: TimeInterval // 음성메모 길이
+    private var progressTimer: Timer? // 프로그레스바
     
-    //음성메모된 파일
-    var recordedFiles: [URL]
+    var recordedFiles: [URL] //음성메모된 파일
     
-    //현재 선택된 음성메모 파일
-    @Published var selectedRecoredFile: URL?
+    @Published var selectedRecoredFile: URL? //현재 선택된 음성메모 파일
     
     init(
         isDisplayRemoveVoiceRecorderAlert: Bool = false,
@@ -55,61 +53,64 @@ class VoiceRecorderViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate 
 }
 
 extension VoiceRecorderViewModel {
+    /// 음성메모를 눌렀을 때 메소드
     func voiceRecordCellTapped(_ recordedFile: URL) {
-        if selectedRecoredFile != recordedFile {
-            //TODO: 재성정지 메서드 호출
-            stopPlaying()
-            selectedRecoredFile = recordedFile
+        if selectedRecoredFile != recordedFile { // 선택된 음성메모가 아닌 경우
+            stopPlaying() // 재생을 중지하고
+            selectedRecoredFile = recordedFile // 업데이트 해줍니다!
         }
     }
     
+    /// 음성메모를 삭제버튼을 눌렀을 때 메소드
     func removeBtnTapped() {
-        //TODO: 삭제 얼럿 노출을 위한 상태 변경 메서드 호출
-        setIsDisplayRemoveVoiceRecorderAlert(true)
+        setIsDisplayRemoveVoiceRecorderAlert(true) // 삭제 얼럿 노출을 위한 상태 변경 메서드 호출
     }
     
+    /// 선택한 음성메모를 삭제하는 메소드
     func removeSelectedVoiceRecord() {
         guard let fileToRemove = selectedRecoredFile,
               let indexToRemove = recordedFiles.firstIndex(of: fileToRemove) else {
-            //TODO: 선택된 음성메모를 찾을 수 없다는 에러 노출
-            displayAlert(message: "선택된 음성메모 파일을 찾을 수 없습니다")
+            displayAlert(message: "선택된 음성메모 파일을 찾을 수 없습니다") // 선택된 음성메모를 찾을 수 없다는 에러 노출
             return
         }
         
         do {
-            try FileManager.default.removeItem(at: fileToRemove)
-            recordedFiles.remove(at: indexToRemove)
-            selectedRecoredFile = nil
-            //TODO: 재생 정지 메서드 호출
-            stopPlaying()
-            //TODO: 삭제 성공 얼럿 노출
-            displayAlert(message: "선택된 음성메모 파일을 성공적으로 삭제했습니다")
+            try FileManager.default.removeItem(at: fileToRemove) // 삭제할 음성메모를 파일 메니저를 통해 삭제하고
+            recordedFiles.remove(at: indexToRemove) // 삭제리스트에서도 지우고
+            selectedRecoredFile = nil // 선택한 음성메모 nil로 업데이트
+            stopPlaying() // 재생 정지 메서드 호출
+            displayAlert(message: "선택된 음성메모 파일을 성공적으로 삭제했습니다") // 삭제했다는 alert 메소드 호출
         } catch {
             //TODO: 삭제 실패 오류 얼럿 노출
-            displayAlert(message: "선택된 음성메모 파일 삭제 중 오류가 발생하였습니다")
+            displayAlert(message: "선택된 음성메모 파일 삭제 중 오류가 발생하였습니다") // 삭제 실패 오류 alert 메소드 호출
         }
     }
     
+    /// 음성 메모를 삭제할건지 물어보는 alert을 띄울지 결정하는 메소드
     private func setIsDisplayRemoveVoiceRecorderAlert(_ isDisplay: Bool) {
         isDisplayRemoveVoiceRecorderAlert = isDisplay
     }
     
+    /// 오류가 발생했을때 뜨는 메세지를 정해주는 메소드
     private func setErrorAlertMessage(_ message: String) {
         alertMessage = message
     }
     
+    /// 오류가 발생했을때 뜨는 alert을 띄울지 결정하는 메소드
     private func setIsDisplayErrorAlert(_ isDisplay: Bool) {
         isDisplayAlert = isDisplay
     }
     
+    // alert을 띄어주는 메소드
     private func displayAlert(message: String) {
-        setErrorAlertMessage(message)
-        setIsDisplayErrorAlert(true)
+        setErrorAlertMessage(message) // 관련된 메세지를 넣어주고
+        setIsDisplayErrorAlert(true) // alert창을 띄울지 정하는 메소드 호출
         
     }
 }
 
 //MARK: - 음성메모 녹음 관련
+
 extension VoiceRecorderViewModel {
     func recordBtnTapped() {
         selectedRecoredFile = nil
@@ -128,6 +129,7 @@ extension VoiceRecorderViewModel {
         }
     }
     
+    // 녹음 시작하는 메소드
     private func startRecording() {
         let fileURL = getDocumentsDirectory().appendingPathComponent("새로운 녹음 \(recordedFiles.count + 1)")
         let settings = [
@@ -139,19 +141,18 @@ extension VoiceRecorderViewModel {
         
         do {
             audioRecorder = try AVAudioRecorder(url: fileURL, settings: settings)
-            audioRecorder?.record()
-            self.isRecording = true
+            audioRecorder?.record() // 녹음
+            self.isRecording = true // 녹음 중임을 알림
         } catch {
             displayAlert(message: "음성 메모 녹음 중 오류가 발생했습니다")
         }
     }
     
     private func stopRecording() {
-        audioRecorder?.stop()
-        self.recordedFiles.append(self.audioRecorder!.url)
-        self.isRecording = false
+        audioRecorder?.stop() // 녹음 중지
+        self.recordedFiles.append(self.audioRecorder!.url) // 해당 녹음 파일을 추가해줌
+        self.isRecording = false // 녹음이 끝났음을 알림
     }
-    
     
     
     private func getDocumentsDirectory() -> URL {
@@ -180,13 +181,15 @@ extension VoiceRecorderViewModel {
         }
     }
     
+    //현재시간 업데이트
     private func updateCurrentTime() {
         self.playedTime = audioPlayer?.currentTime ?? 0
     }
     
+    // 음성 메모 멈추는 메소드
     private func stopPlaying() {
-        audioPlayer?.stop()
-        playedTime = 0
+        audioPlayer?.stop() // 재생 멈추고
+        playedTime = 0 // 제생시간 초기화
         self.progressTimer?.invalidate()
         self.isPlaying = false
         self.isPaused = false
