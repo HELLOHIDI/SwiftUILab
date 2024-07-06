@@ -38,6 +38,8 @@
 		D2BDFC272C2C8ADE00384DFB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDFC262C2C8ADE00384DFB /* HomeView.swift */; };
 		D2BDFC2A2C2C8AF100384DFB /* MemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDFC292C2C8AF100384DFB /* MemoView.swift */; };
 		D2BDFC2D2C2C8B0A00384DFB /* TodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDFC2C2C2C8B0A00384DFB /* TodoView.swift */; };
+		D2C1A0932C391D730005EFD2 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C1A0922C391D730005EFD2 /* Tab.swift */; };
+		D2C1A0952C391D950005EFD2 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C1A0942C391D950005EFD2 /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +76,8 @@
 		D2BDFC262C2C8ADE00384DFB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		D2BDFC292C2C8AF100384DFB /* MemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoView.swift; sourceTree = "<group>"; };
 		D2BDFC2C2C2C8B0A00384DFB /* TodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoView.swift; sourceTree = "<group>"; };
+		D2C1A0922C391D730005EFD2 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
+		D2C1A0942C391D950005EFD2 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,6 +259,7 @@
 		D2BDFC172C2C7B2300384DFB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D2C1A0912C391D680005EFD2 /* Home */,
 				D22D23402C370A8C00BD552E /* Timer */,
 				D21BE01A2C2EFF390046F281 /* Memo */,
 				D2517FC32C2D36D60056684F /* Todo */,
@@ -277,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				D2BDFC262C2C8ADE00384DFB /* HomeView.swift */,
+				D2C1A0942C391D950005EFD2 /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -316,6 +322,14 @@
 				D2517FCA2C2D37A90056684F /* TodoListViewModel.swift */,
 			);
 			path = TodoList;
+			sourceTree = "<group>";
+		};
+		D2C1A0912C391D680005EFD2 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				D2C1A0922C391D730005EFD2 /* Tab.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -415,7 +429,9 @@
 				D21BE01F2C2EFFE40046F281 /* MemoViewModel.swift in Sources */,
 				D2BDFC232C2C89B400384DFB /* Path.swift in Sources */,
 				D21BE0232C2EFFFF0046F281 /* MemoListView.swift in Sources */,
+				D2C1A0932C391D730005EFD2 /* Tab.swift in Sources */,
 				D243D9C42C37B3F900349505 /* SettingView.swift in Sources */,
+				D2C1A0952C391D950005EFD2 /* HomeViewModel.swift in Sources */,
 				D255489C2C2C7A450016A7C0 /* HiLobaNoteApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
