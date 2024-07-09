@@ -13,6 +13,11 @@
 		D21BE01F2C2EFFE40046F281 /* MemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BE01E2C2EFFE40046F281 /* MemoViewModel.swift */; };
 		D21BE0232C2EFFFF0046F281 /* MemoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BE0222C2EFFFF0046F281 /* MemoListView.swift */; };
 		D21BE0252C2F000B0046F281 /* MemoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BE0242C2F000B0046F281 /* MemoListViewModel.swift */; };
+		D22D23422C370A9700BD552E /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D23412C370A9700BD552E /* Time.swift */; };
+		D22D23442C370B4300BD552E /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D23432C370B4300BD552E /* Int+Extension.swift */; };
+		D22D23472C370C4B00BD552E /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D23462C370C4A00BD552E /* TimerViewModel.swift */; };
+		D22D234B2C370C5E00BD552E /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D234A2C370C5E00BD552E /* TimerView.swift */; };
+		D243D9C42C37B3F900349505 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D243D9C32C37B3F900349505 /* SettingView.swift */; };
 		D2517FBC2C2D33070056684F /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2517FBB2C2D33070056684F /* Date+Extension.swift */; };
 		D2517FC52C2D36E40056684F /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2517FC42C2D36E40056684F /* Todo.swift */; };
 		D2517FC92C2D379B0056684F /* TodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2517FC82C2D379B0056684F /* TodoListView.swift */; };
@@ -22,6 +27,9 @@
 		D255489E2C2C7A450016A7C0 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D255489D2C2C7A450016A7C0 /* OnboardingView.swift */; };
 		D25548A42C2C7A470016A7C0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D25548A32C2C7A470016A7C0 /* Preview Assets.xcassets */; };
 		D25548AB2C2C7A590016A7C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D25548AA2C2C7A590016A7C0 /* Assets.xcassets */; };
+		D289DCAC2C33CAC600AF1156 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D289DCAB2C33CAC600AF1156 /* Double+Extension.swift */; };
+		D289DCAF2C33CB3C00AF1156 /* VoiceRecorderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D289DCAE2C33CB3C00AF1156 /* VoiceRecorderViewModel.swift */; };
+		D289DCB12C33CB4900AF1156 /* VoiceRecorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D289DCB02C33CB4900AF1156 /* VoiceRecorderView.swift */; };
 		D2BDFC1B2C2C7B8E00384DFB /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDFC1A2C2C7B8E00384DFB /* Color+Extension.swift */; };
 		D2BDFC1E2C2C7D0A00384DFB /* OnboardingContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDFC1D2C2C7D0A00384DFB /* OnboardingContent.swift */; };
 		D2BDFC202C2C7E4D00384DFB /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDFC1F2C2C7E4D00384DFB /* OnboardingViewModel.swift */; };
@@ -30,6 +38,8 @@
 		D2BDFC272C2C8ADE00384DFB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDFC262C2C8ADE00384DFB /* HomeView.swift */; };
 		D2BDFC2A2C2C8AF100384DFB /* MemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDFC292C2C8AF100384DFB /* MemoView.swift */; };
 		D2BDFC2D2C2C8B0A00384DFB /* TodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDFC2C2C2C8B0A00384DFB /* TodoView.swift */; };
+		D2C1A0932C391D730005EFD2 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C1A0922C391D730005EFD2 /* Tab.swift */; };
+		D2C1A0952C391D950005EFD2 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C1A0942C391D950005EFD2 /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +49,11 @@
 		D21BE01E2C2EFFE40046F281 /* MemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoViewModel.swift; sourceTree = "<group>"; };
 		D21BE0222C2EFFFF0046F281 /* MemoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListView.swift; sourceTree = "<group>"; };
 		D21BE0242C2F000B0046F281 /* MemoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListViewModel.swift; sourceTree = "<group>"; };
+		D22D23412C370A9700BD552E /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
+		D22D23432C370B4300BD552E /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
+		D22D23462C370C4A00BD552E /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
+		D22D234A2C370C5E00BD552E /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		D243D9C32C37B3F900349505 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		D2517FBB2C2D33070056684F /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Date+Extension.swift"; path = "../../../../../../Documents/Date+Extension.swift"; sourceTree = "<group>"; };
 		D2517FC42C2D36E40056684F /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		D2517FC82C2D379B0056684F /* TodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListView.swift; sourceTree = "<group>"; };
@@ -50,6 +65,9 @@
 		D25548A12C2C7A470016A7C0 /* HiLobaNote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HiLobaNote.entitlements; sourceTree = "<group>"; };
 		D25548A32C2C7A470016A7C0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D25548AA2C2C7A590016A7C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../Desktop/Assets.xcassets; sourceTree = "<group>"; };
+		D289DCAB2C33CAC600AF1156 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
+		D289DCAE2C33CB3C00AF1156 /* VoiceRecorderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceRecorderViewModel.swift; sourceTree = "<group>"; };
+		D289DCB02C33CB4900AF1156 /* VoiceRecorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceRecorderView.swift; sourceTree = "<group>"; };
 		D2BDFC1A2C2C7B8E00384DFB /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		D2BDFC1D2C2C7D0A00384DFB /* OnboardingContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContent.swift; sourceTree = "<group>"; };
 		D2BDFC1F2C2C7E4D00384DFB /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
@@ -58,6 +76,8 @@
 		D2BDFC262C2C8ADE00384DFB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		D2BDFC292C2C8AF100384DFB /* MemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoView.swift; sourceTree = "<group>"; };
 		D2BDFC2C2C2C8B0A00384DFB /* TodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoView.swift; sourceTree = "<group>"; };
+		D2C1A0922C391D730005EFD2 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
+		D2C1A0942C391D950005EFD2 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +134,31 @@
 			path = Todo;
 			sourceTree = "<group>";
 		};
+		D22D23402C370A8C00BD552E /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				D22D23412C370A9700BD552E /* Time.swift */,
+			);
+			path = Timer;
+			sourceTree = "<group>";
+		};
+		D22D23452C370C3F00BD552E /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				D22D23462C370C4A00BD552E /* TimerViewModel.swift */,
+				D22D234A2C370C5E00BD552E /* TimerView.swift */,
+			);
+			path = Timer;
+			sourceTree = "<group>";
+		};
+		D243D9C22C37B3E200349505 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				D243D9C32C37B3F900349505 /* SettingView.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		D2517FC32C2D36D60056684F /* Todo */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +206,15 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		D289DCAD2C33CB2000AF1156 /* VoiceRecorder */ = {
+			isa = PBXGroup;
+			children = (
+				D289DCAE2C33CB3C00AF1156 /* VoiceRecorderViewModel.swift */,
+				D289DCB02C33CB4900AF1156 /* VoiceRecorderView.swift */,
+			);
+			path = VoiceRecorder;
+			sourceTree = "<group>";
+		};
 		D2BDFC112C2C7ACB00384DFB /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +234,9 @@
 		D2BDFC142C2C7ADC00384DFB /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				D243D9C22C37B3E200349505 /* Setting */,
+				D22D23452C370C3F00BD552E /* Timer */,
+				D289DCAD2C33CB2000AF1156 /* VoiceRecorder */,
 				D2BDFC2B2C2C8AFD00384DFB /* TodoList */,
 				D2BDFC282C2C8AE300384DFB /* MemoList */,
 				D2BDFC192C2C7B5100384DFB /* Home */,
@@ -193,6 +250,8 @@
 			children = (
 				D2BDFC1A2C2C7B8E00384DFB /* Color+Extension.swift */,
 				D2517FBB2C2D33070056684F /* Date+Extension.swift */,
+				D289DCAB2C33CAC600AF1156 /* Double+Extension.swift */,
+				D22D23432C370B4300BD552E /* Int+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -200,6 +259,8 @@
 		D2BDFC172C2C7B2300384DFB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D2C1A0912C391D680005EFD2 /* Home */,
+				D22D23402C370A8C00BD552E /* Timer */,
 				D21BE01A2C2EFF390046F281 /* Memo */,
 				D2517FC32C2D36D60056684F /* Todo */,
 				D2BDFC212C2C89AB00384DFB /* Path */,
@@ -221,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				D2BDFC262C2C8ADE00384DFB /* HomeView.swift */,
+				D2C1A0942C391D950005EFD2 /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -260,6 +322,14 @@
 				D2517FCA2C2D37A90056684F /* TodoListViewModel.swift */,
 			);
 			path = TodoList;
+			sourceTree = "<group>";
+		};
+		D2C1A0912C391D680005EFD2 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				D2C1A0922C391D730005EFD2 /* Tab.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -339,19 +409,29 @@
 				D21BE0172C2EFC2C0046F281 /* CustomNavigationBar.swift in Sources */,
 				D21BE0252C2F000B0046F281 /* MemoListViewModel.swift in Sources */,
 				D2BDFC2A2C2C8AF100384DFB /* MemoView.swift in Sources */,
+				D22D23422C370A9700BD552E /* Time.swift in Sources */,
 				D2BDFC2D2C2C8B0A00384DFB /* TodoView.swift in Sources */,
 				D2BDFC1E2C2C7D0A00384DFB /* OnboardingContent.swift in Sources */,
+				D289DCAF2C33CB3C00AF1156 /* VoiceRecorderViewModel.swift in Sources */,
 				D255489E2C2C7A450016A7C0 /* OnboardingView.swift in Sources */,
 				D2517FC52C2D36E40056684F /* Todo.swift in Sources */,
 				D2BDFC1B2C2C7B8E00384DFB /* Color+Extension.swift in Sources */,
+				D22D234B2C370C5E00BD552E /* TimerView.swift in Sources */,
 				D2517FC92C2D379B0056684F /* TodoListView.swift in Sources */,
 				D2BDFC252C2C89DA00384DFB /* PathModel.swift in Sources */,
 				D21BE0192C2EFC460046F281 /* NavigationBtnType.swift in Sources */,
 				D2BDFC272C2C8ADE00384DFB /* HomeView.swift in Sources */,
+				D289DCB12C33CB4900AF1156 /* VoiceRecorderView.swift in Sources */,
+				D22D23472C370C4B00BD552E /* TimerViewModel.swift in Sources */,
+				D289DCAC2C33CAC600AF1156 /* Double+Extension.swift in Sources */,
 				D21BE01C2C2EFF4A0046F281 /* Memo.swift in Sources */,
+				D22D23442C370B4300BD552E /* Int+Extension.swift in Sources */,
 				D21BE01F2C2EFFE40046F281 /* MemoViewModel.swift in Sources */,
 				D2BDFC232C2C89B400384DFB /* Path.swift in Sources */,
 				D21BE0232C2EFFFF0046F281 /* MemoListView.swift in Sources */,
+				D2C1A0932C391D730005EFD2 /* Tab.swift in Sources */,
+				D243D9C42C37B3F900349505 /* SettingView.swift in Sources */,
+				D2C1A0952C391D950005EFD2 /* HomeViewModel.swift in Sources */,
 				D255489C2C2C7A450016A7C0 /* HiLobaNoteApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
