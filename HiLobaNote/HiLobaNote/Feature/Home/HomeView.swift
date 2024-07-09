@@ -75,6 +75,7 @@ struct HomeView: View {
                     }
                     .tag(Tab.setting)
             }
+            .environmentObject(homeViewModel)
             
             //구분선
             SeperatorLineView()

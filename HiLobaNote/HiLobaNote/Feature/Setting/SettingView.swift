@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SettingView: View {
+    @EnvironmentObject private var homeViewModel: HomeViewModel
+    
     var body: some View {
         VStack {
             // 타이틀 뷰
@@ -49,16 +51,18 @@ private struct TitleView: View {
 
 //MARK: - 전체 탭 설정된 카운트 뷰
 private struct TotalTabCountView: View {
+    @EnvironmentObject private var homeViewModel: HomeViewModel
+    
     fileprivate var body: some View {
         //가각 탭 카운트
         HStack {
-            TabCountView(title: "TODO", count: 0)
+            TabCountView(title: "TODO", count: homeViewModel.todosCount)
             Spacer()
                 .frame(width: 30)
-            TabCountView(title: "TODO", count: 0)
+            TabCountView(title: "메모", count: homeViewModel.memosCount)
             Spacer()
                 .frame(width: 30)
-            TabCountView(title: "TODO", count: 0)
+            TabCountView(title: "음성 메모", count: homeViewModel.voiceRecordersCount)
         }
     }
 }
@@ -87,6 +91,8 @@ private struct TabCountView: View {
 }
 // MARK: - 총 탭 무브 뷰
 private struct TotalTabMoveView: View {
+    @EnvironmentObject private var homeViewModel: HomeViewModel
+    
     fileprivate var body: some View {
         VStack {
             Rectangle()
@@ -95,22 +101,30 @@ private struct TotalTabMoveView: View {
             
             TabMoveView(
                 title: "Todo List",
-                tabAction: { }
+                tabAction: { 
+                    homeViewModel.changeSelectedTab(.todoList)
+                }
             )
             
             TabMoveView(
-                title: "Todo List",
-                tabAction: { }
+                title: "메모장",
+                tabAction: {
+                    homeViewModel.changeSelectedTab(.memo)
+                }
             )
             
             TabMoveView(
-                title: "Todo List",
-                tabAction: { }
+                title: "음성메모",
+                tabAction: {
+                    homeViewModel.changeSelectedTab(.voiceRecorder)
+                }
             )
             
             TabMoveView(
-                title: "Todo List",
-                tabAction: { }
+                title: "타이머",
+                tabAction: {
+                    homeViewModel.changeSelectedTab(.todoList)
+                }
             )
             Rectangle()
                 .fill(Color.customGray1)

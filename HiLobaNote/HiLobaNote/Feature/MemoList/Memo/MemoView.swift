@@ -47,6 +47,7 @@ struct MemoView: View {
                     .padding(.bottom, 10)
             }
         }
+        
     }
 }
 
