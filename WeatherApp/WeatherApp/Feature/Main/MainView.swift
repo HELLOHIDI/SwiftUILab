@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct MainView: View {
+    @StateObject private var viewModel = MainViewModel()
     @State private var searchText = ""
     
     var body: some View {
@@ -28,8 +29,13 @@ struct ContentView: View {
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 16) {
                     // 날씨 리스트 셀뷰 여러 개
-                    ForEach(0..<8) { _ in
-                        WeatherListCellView()
+//                    ForEach(0..<8) { _ in
+//                        WeatherListCellView(viewModel: viewModel)
+//                    }
+                    ForEach(Array(viewModel.weatherContent.enumerated()), id: \.element) { index, weatherContent in
+                        WeatherListCellView(weatherContent: weatherContent)
+                            .tag(index)
+                        
                     }
                 }
             }
@@ -80,13 +86,26 @@ private struct SearchView: View {
 
 
 private struct WeatherListCellView: View {
+    private var weatherContent: WeatherModel
+    
+    fileprivate init(weatherContent: WeatherModel) {
+        self.weatherContent = weatherContent
+    }
+    
     fileprivate var body: some View {
         ZStack {
             Image("listImg")
             HStack {
-                PlaceView()
+                PlaceView(
+                    place: weatherContent.city,
+                    weather: weatherContent.weather
+                )
                 Spacer()
-                TemparatorView()
+                TemparatorView(
+                    temparature: weatherContent.temparature,
+                    maxTemparature: weatherContent.maxTemparature,
+                    minTemparature: weatherContent.minTemparature
+                )
             }
             
         }
@@ -95,8 +114,15 @@ private struct WeatherListCellView: View {
 }
 
 private struct PlaceView: View {
+    private var place: String
+    private var weather: String
+    
+    fileprivate init(place: String, weather: String) {
+        self.place = place
+        self.weather = weather
+    }
+    
     fileprivate var body: some View {
-        
         VStack(alignment: .leading) {
             Spacer()
                 .frame(height: 10)
@@ -106,12 +132,12 @@ private struct PlaceView: View {
                 .foregroundColor(.white)
                 .padding(.bottom, 2)
             
-            Text("의정부시")
+            Text(place)
                 .font(.system(size: 17, weight: .medium))
                 .foregroundColor(.white)
                 .padding(.bottom, 23)
             
-            Text("흐림")
+            Text(weather)
                 .font(.system(size: 16, weight: .medium))
                 .foregroundColor(.white)
             
@@ -122,9 +148,18 @@ private struct PlaceView: View {
 }
 
 private struct TemparatorView: View {
+    private var temparature: String
+    private var maxTemparature, minTemparature: Int
+    
+    fileprivate init(temparature: String, maxTemparature: Int, minTemparature: Int) {
+        self.temparature = temparature
+        self.maxTemparature = maxTemparature
+        self.minTemparature = minTemparature
+    }
+    
     fileprivate var body: some View {
         VStack(alignment: .trailing) {
-            Text("21°")
+            Text(temparature)
                 .foregroundColor(.white)
                 .font(.system(size: 52, weight: .light))
             
@@ -132,10 +167,10 @@ private struct TemparatorView: View {
                 .frame(height: 23)
             
             HStack {
-                Text("최고:29°")
+                Text("최고:\(maxTemparature)°")
                     .font(.system(size: 15, weight: .medium))
                     .foregroundColor(.white)
-                Text("최저:15°")
+                Text("최저:\(minTemparature)°")
                     .font(.system(size: 15, weight: .medium))
                     .foregroundColor(.white)
             }
@@ -159,6 +194,6 @@ private struct MemoBtnView: View {
 }
 
 #Preview {
-    ContentView()
+    MainView()
 }
 
