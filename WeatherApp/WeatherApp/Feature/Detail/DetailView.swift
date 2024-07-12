@@ -9,10 +9,12 @@ import SwiftUI
 
 struct DetailView: View {
     @StateObject private var pathModel = PathModel()
+    @EnvironmentObject private var viewModel: DetailViewModel
+    
     var body: some View {
         VStack {
             ScrollView {
-                DetailMainView()
+                DetailMainView(viewModel: viewModel)
             }
             DetailBottomView()
         }
@@ -21,6 +23,12 @@ struct DetailView: View {
 }
 
 private struct DetailMainView: View {
+    private let viewModel: DetailViewModel
+    
+    fileprivate init(viewModel: DetailViewModel) {
+        self.viewModel = viewModel
+    }
+    
     var body: some View {
         VStack {
             Spacer()
@@ -32,7 +40,7 @@ private struct DetailMainView: View {
             Spacer()
                 .frame(height: 44)
             
-            HourlyTemparatorView()
+            HourlyTemparatorView(viewModel: viewModel)
                 .frame(width: 335, height: 212)
             
             
@@ -42,30 +50,32 @@ private struct DetailMainView: View {
 }
 
 private struct WeatherTemparatorView: View {
+    @EnvironmentObject private var viewModel: DetailViewModel
+    
     var body: some View {
         VStack {
-            Text("의정부시")
+            Text(viewModel.wetherData.city)
                 .font(.system(size: 36, weight: .regular))
                 .foregroundColor(.white)
             
             Spacer()
                 .frame(height: 4)
             
-            Text("21°")
+            Text(viewModel.wetherData.temparature)
                 .font(.system(size: 102, weight: .thin))
                 .foregroundColor(.white)
             
             Spacer()
                 .frame(height: 4)
             
-            Text("흐림")
+            Text(viewModel.wetherData.weather)
                 .font(.system(size: 24, weight: .regular))
                 .foregroundColor(.white)
             
             Spacer()
                 .frame(height: 4)
             
-            Text("최고:29°  최저:15°")
+            Text("최고:\(viewModel.wetherData.maxTemparature)°  최저:\(viewModel.wetherData.minTemparature)°")
                 .font(.system(size: 20, weight: .medium))
                 .foregroundColor(.white)
         }
@@ -73,7 +83,13 @@ private struct WeatherTemparatorView: View {
 }
 
 private struct HourlyTemparatorView: View {
-    var body: some View {
+    private let viewModel: DetailViewModel
+    
+    fileprivate init(viewModel: DetailViewModel) {
+        self.viewModel = viewModel
+    }
+    
+    fileprivate var body: some View {
         VStack {
             Spacer()
                 .frame(height: 11)
@@ -96,13 +112,11 @@ private struct HourlyTemparatorView: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
-                    HourlyTemparatorCellView()
-                    HourlyTemparatorCellView()
-                    HourlyTemparatorCellView()
-                    HourlyTemparatorCellView()
-                    HourlyTemparatorCellView()
-                    HourlyTemparatorCellView()
-                    HourlyTemparatorCellView()
+                    ForEach(Array(viewModel.hourlyWeatherContent.enumerated()), id: \.element) { index, hourlyWeatherData in
+                        HourlyTemparatorCellView(hourlyWeatherData: hourlyWeatherData)
+                            .tag(index)
+                        
+                    }
                 }
             }
             .padding(.horizontal, 15)
@@ -117,18 +131,24 @@ private struct HourlyTemparatorView: View {
 }
 
 private struct HourlyTemparatorCellView: View {
+    private let hourlyWeatherData: HourlyWeatherModel
+    
+    fileprivate init(hourlyWeatherData: HourlyWeatherModel) {
+        self.hourlyWeatherData = hourlyWeatherData
+    }
+    
     var body: some View {
         VStack {
-            Text("Now")
+            Text(hourlyWeatherData.time)
                 .font(.system(size: 17, weight: .medium))
                 .foregroundColor(.white)
             
-            Image("cloudy")
+            Image(hourlyWeatherData.icon)
                 .resizable()
                 .frame(width: 44, height: 44)
                 .padding(.bottom, 14)
             
-            Text("21°")
+            Text(hourlyWeatherData.temparature)
                 .font(.system(size: 22, weight: .medium))
                 .foregroundColor(.white)
         }

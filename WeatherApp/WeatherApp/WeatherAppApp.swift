@@ -12,6 +12,8 @@ struct WeatherAppApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
+                .environmentObject(PathModel())
+                .environmentObject(MainViewModel())
         }
     }
 }

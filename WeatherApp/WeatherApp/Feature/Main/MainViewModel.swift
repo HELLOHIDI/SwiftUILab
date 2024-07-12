@@ -16,5 +16,15 @@ class MainViewModel: ObservableObject {
         .init(city: "여의도", weather: "맑음", temparature: "12°", maxTemparature: 23, minTemparature: 6),
         .init(city: "제주도", weather: "소나기", temparature: "9°", maxTemparature: 12, minTemparature: 10),
     ]
+    
+    @Published var index: Int
+    
+    init(index: Int = 0) {
+        self.index = index
+    }
+    
+    func setWeatherContentIndex(_ index: Int) {
+        self.index = index
+    }
 }
 

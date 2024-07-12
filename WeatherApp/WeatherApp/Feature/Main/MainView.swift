@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject private var viewModel = MainViewModel()
+    @EnvironmentObject private var viewModel: MainViewModel
     @EnvironmentObject private var pathModel: PathModel
     
     var body: some View {
@@ -20,6 +20,7 @@ struct MainView: View {
                         switch pathType {
                         case .detail:
                             DetailView()
+                                .environmentObject(DetailViewModel(wetherData: viewModel.weatherContent[viewModel.index]))
                                 .navigationBarBackButtonHidden()
                         }
                     }
@@ -57,9 +58,11 @@ private struct MainContentView: View {
                 VStack(spacing: 16) {
                     // 날씨 리스트 셀뷰 여러 개
                     ForEach(Array(viewModel.weatherContent.enumerated()), id: \.element) { index, weatherContent in
-                        WeatherListCellView(weatherContent: weatherContent)
-                            .tag(index)
-                        
+                        WeatherListCellView(
+                            index: index,
+                            weatherContent: weatherContent
+                        )
+                        .tag(index)
                     }
                 }
             }
@@ -112,15 +115,21 @@ private struct SearchView: View {
 
 private struct WeatherListCellView: View {
     @EnvironmentObject private var pathModel: PathModel
+    @EnvironmentObject private var viewModel: MainViewModel
     private var weatherContent: WeatherModel
+    private let index: Int
     
-    fileprivate init(weatherContent: WeatherModel) {
+    fileprivate init(index: Int, weatherContent: WeatherModel) {
+        self.index = index
         self.weatherContent = weatherContent
     }
     
     fileprivate var body: some View {
         Button(
-            action: { pathModel.paths.append(.detail)},
+            action: {
+                viewModel.setWeatherContentIndex(index)
+                pathModel.paths.append(.detail)
+            },
             label: {
                 ZStack {
                     Image("listImg")
@@ -226,6 +235,7 @@ private struct MemoBtnView: View {
 #Preview {
     NavigationView {
         MainView()
+            .environmentObject(MainViewModel())
             .environmentObject(PathModel())
     }
 }
