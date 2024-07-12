@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DetailView: View {
+    @StateObject private var pathModel = PathModel()
     var body: some View {
         VStack {
             ScrollView {
@@ -173,6 +174,16 @@ private struct DetailBottomView: View {
     }
 }
 
+private struct WeatherForecastView: View {
+    var body: some View {
+        ScrollView(showsIndicators: false) {
+            VStack {
+                
+            }
+        }
+    }
+}
+
 private struct DetailBottomDotView: View {
     var body: some View {
         HStack {
@@ -187,7 +198,8 @@ private struct DetailBottomDotView: View {
     }
 }
 
-
 #Preview {
     DetailView()
+        .environmentObject(PathModel())
 }
+

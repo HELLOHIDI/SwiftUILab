@@ -9,9 +9,36 @@ import SwiftUI
 
 struct MainView: View {
     @StateObject private var viewModel = MainViewModel()
-    @State private var searchText = ""
+    @EnvironmentObject private var pathModel: PathModel
     
     var body: some View {
+        NavigationStack(path: $pathModel.paths) {
+            MainContentView(viewModel: viewModel)
+                .navigationDestination(
+                    for: PathType.self,
+                    destination: { pathType in
+                        switch pathType {
+                        case .detail:
+                            DetailView()
+                                .navigationBarBackButtonHidden()
+                        }
+                    }
+                )
+        }
+        
+    }
+}
+
+private struct MainContentView: View {
+    @ObservedObject private var viewModel: MainViewModel
+    @State private var searchText = ""
+    
+    fileprivate init(viewModel: MainViewModel) {
+        self.viewModel = viewModel
+    }
+    
+    var body: some View {
+        
         VStack {
             Spacer()
             
@@ -29,9 +56,6 @@ struct MainView: View {
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 16) {
                     // 날씨 리스트 셀뷰 여러 개
-//                    ForEach(0..<8) { _ in
-//                        WeatherListCellView(viewModel: viewModel)
-//                    }
                     ForEach(Array(viewModel.weatherContent.enumerated()), id: \.element) { index, weatherContent in
                         WeatherListCellView(weatherContent: weatherContent)
                             .tag(index)
@@ -42,6 +66,7 @@ struct MainView: View {
         }
         .background(Color.black)
     }
+    
 }
 
 private struct TitleView: View {
@@ -86,6 +111,7 @@ private struct SearchView: View {
 
 
 private struct WeatherListCellView: View {
+    @EnvironmentObject private var pathModel: PathModel
     private var weatherContent: WeatherModel
     
     fileprivate init(weatherContent: WeatherModel) {
@@ -93,22 +119,26 @@ private struct WeatherListCellView: View {
     }
     
     fileprivate var body: some View {
-        ZStack {
-            Image("listImg")
-            HStack {
-                PlaceView(
-                    place: weatherContent.city,
-                    weather: weatherContent.weather
-                )
-                Spacer()
-                TemparatorView(
-                    temparature: weatherContent.temparature,
-                    maxTemparature: weatherContent.maxTemparature,
-                    minTemparature: weatherContent.minTemparature
-                )
+        Button(
+            action: { pathModel.paths.append(.detail)},
+            label: {
+                ZStack {
+                    Image("listImg")
+                    HStack {
+                        PlaceView(
+                            place: weatherContent.city,
+                            weather: weatherContent.weather
+                        )
+                        Spacer()
+                        TemparatorView(
+                            temparature: weatherContent.temparature,
+                            maxTemparature: weatherContent.maxTemparature,
+                            minTemparature: weatherContent.minTemparature
+                        )
+                    }
+                }
             }
-            
-        }
+        )
         .frame(width: 335, height: 117)
     }
 }
@@ -194,6 +224,8 @@ private struct MemoBtnView: View {
 }
 
 #Preview {
-    MainView()
+    NavigationView {
+        MainView()
+            .environmentObject(PathModel())
+    }
 }
-
