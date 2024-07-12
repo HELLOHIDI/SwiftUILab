@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DetailView: View {
-    @StateObject private var pathModel = PathModel()
+    @EnvironmentObject private var pathModel: PathModel
     @EnvironmentObject private var viewModel: DetailViewModel
     
     var body: some View {
@@ -157,6 +157,8 @@ private struct HourlyTemparatorCellView: View {
 }
 
 private struct DetailBottomView: View {
+    @EnvironmentObject private var pathModel: PathModel
+    
     var body: some View {
         VStack {
             Rectangle()
@@ -181,7 +183,10 @@ private struct DetailBottomView: View {
                 Spacer()
                 
                 Button(
-                    action: {},
+                    action: {
+                        print(pathModel.paths.count)
+                        pathModel.paths.removeLast()
+                    },
                     label: {
                         Image("list")
                             .resizable()
@@ -221,5 +226,6 @@ private struct DetailBottomDotView: View {
 #Preview {
     DetailView()
         .environmentObject(PathModel())
+        .environmentObject(DetailViewModel())
 }
 

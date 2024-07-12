@@ -20,9 +20,21 @@ class DetailViewModel: ObservableObject {
         .init(time: "Now", icon: "cloudy", temparature: "21°")
     ]
     
-    @Published var wetherData: WeatherModel
+    @Published var wetherData: WeatherModel = .init(
+        city: "",
+        weather: "",
+        temparature: "",
+        maxTemparature: 0,
+        minTemparature: 0
+    )
     
-    init(wetherData: WeatherModel) {
+    init(wetherData: WeatherModel = .init(
+        city: "",
+        weather: "",
+        temparature: "",
+        maxTemparature: 0,
+        minTemparature: 0
+    )) {
         self.wetherData = wetherData
     }
 }

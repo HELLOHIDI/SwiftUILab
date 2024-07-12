@@ -20,6 +20,7 @@ struct MainView: View {
                         switch pathType {
                         case .detail:
                             DetailView()
+//                                .environmentObject(PathModel())
                                 .environmentObject(DetailViewModel(wetherData: viewModel.weatherContent[viewModel.index]))
                                 .navigationBarBackButtonHidden()
                         }
