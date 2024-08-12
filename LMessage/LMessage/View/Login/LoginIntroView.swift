@@ -7,6 +7,7 @@
 import SwiftUI
 
 struct LoginIntroView: View {
+    // 로그인 뷰를 띄울지에 대한 상태값
     @State private var isPresentedLoginView: Bool = false
     
     var body: some View {
@@ -24,11 +25,13 @@ struct LoginIntroView: View {
                 Spacer()
                 
                 Button {
+                    // 버튼을 누르면 화면 이동 상태값을 변경하여서
                     isPresentedLoginView.toggle()
                 } label: {
                     Text("로그인")
                 }.buttonStyle(LoginButtonStyle(textColor: .lineApp))
             }
+            // 다음뷰로 넘어갈 수 있도록 한다
             .navigationDestination(isPresented: $isPresentedLoginView) {
                 LoginView()
             }

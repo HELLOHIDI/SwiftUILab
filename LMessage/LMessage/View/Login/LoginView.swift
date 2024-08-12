@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss) var dismiss // dismiss 액션
     @EnvironmentObject var authViewModel: AuthenticationViewModel
     
     var body: some View {
@@ -28,6 +28,7 @@ struct LoginView: View {
             Spacer()
             
             Button {
+                // 구글로그인 버튼
                 authViewModel.send(action: .googleLogin)
             } label: {
                 Text("Google로 로그인")
