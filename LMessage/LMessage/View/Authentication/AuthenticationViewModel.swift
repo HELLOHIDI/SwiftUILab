@@ -46,6 +46,10 @@ class AuthenticationViewModel: ObservableObject {
         case .googleLogin:
             isLoading = true
             container.services.authService.singInwithGoogle()
+            //TODO: db
+                .flatMap { user in
+                    self.container.services.userService.addUser(user)
+                }
                 .sink { [weak self] completion in
                     if case .failure = completion { // 만약 실패했다면
                         self?.isLoading = false // 로딩중을 꺼주고 (+ 나중에 토스트메세지로 어떤 에러인지를 알려줘도 좋겠죠!)

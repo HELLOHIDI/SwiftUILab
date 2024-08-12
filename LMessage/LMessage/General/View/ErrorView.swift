@@ -1,5 +1,5 @@
 //
-//  MainTabView.swift
+//  ErrorView.swift
 //  LMessage
 //
 //  Created by 류희재 on 8/12/24.
@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct MainTabView: View {
+struct ErrorView: View {
     var body: some View {
-        Text("MainTabView")
+        Text("ErrorView")
     }
 }
 
 #Preview {
-    MainTabView()
+    ErrorView()
 }
