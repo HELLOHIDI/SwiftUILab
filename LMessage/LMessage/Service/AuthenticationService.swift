@@ -12,10 +12,11 @@ import FirebaseCore
 import FirebaseAuth
 import GoogleSignIn
 
+/// 인증 오류
 enum AuthenticationError: Error {
-    case clientIDError
-    case tokenError
-    case invalidated
+    case clientIDError // 클라이언트ID 에러
+    case tokenError // 토큰 에러
+    case invalidated // 파이어베이스 유저 로그인 실패
 }
 
 protocol AuthenticationServiceType {

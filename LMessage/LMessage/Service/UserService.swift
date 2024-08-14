@@ -9,10 +9,10 @@ import Foundation
 import Combine
 
 protocol UserServiceType {
-    func addUser(_ user: User) -> AnyPublisher<User, ServiceError>
-    func addUserAfterContact(users: [User]) -> AnyPublisher<Void, ServiceError>
-    func getUser(userId: String) -> AnyPublisher<User, ServiceError>
-    func loadUsers(id: String) -> AnyPublisher<[User], ServiceError>
+    func addUser(_ user: User) -> AnyPublisher<User, ServiceError> // 파이어베이스의 유저를 추가한다
+    func addUserAfterContact(users: [User]) -> AnyPublisher<Void, ServiceError> // 연락처 연동이후 유저를 추가한다
+    func getUser(userId: String) -> AnyPublisher<User, ServiceError> // 유저의 정보를 가져온다
+    func loadUsers(id: String) -> AnyPublisher<[User], ServiceError> // 유저들의 정보를 가져온다
 }
 
 class UserService: UserServiceType {
@@ -26,7 +26,10 @@ class UserService: UserServiceType {
     func addUser(_ user: User) -> AnyPublisher<User, ServiceError> {
         dbRepository.addUser(user.toObject())
             .map { user }
-            .mapError { .error($0) }
+            .mapError { error in
+                print("tlqkf \(error.localizedDescription)")
+                return .error(error)
+            }
             .eraseToAnyPublisher()
     }
     

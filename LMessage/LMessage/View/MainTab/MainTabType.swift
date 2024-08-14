@@ -7,7 +7,8 @@
 
 import Foundation
 
-enum MainTabType: String, CaseIterable {
+/// 메인 탭의 타입
+enum MainTabType: String, CaseIterable { // For Each를 위해서 CaseIterable 프로토콜 채택
     case home
     case chat
     case phone

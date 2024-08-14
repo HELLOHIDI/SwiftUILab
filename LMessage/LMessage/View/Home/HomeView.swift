@@ -17,7 +17,7 @@ struct HomeView: View {
                     switch $0 {
                     case .myProfile:
                         MyProfileView()
-                    case let .otherProfile(userId):
+                    case let .otherProfile(_):
                         OtherProfileView()
                     }
                 }
@@ -25,18 +25,23 @@ struct HomeView: View {
     }
     
     @ViewBuilder
+    /*
+     body 프로퍼티는 암시적으로 @ViewBuilder로 선언되어있기 때문.
+     하지만 body외의 다른 프로퍼티나 메소드는
+     기본적으로 ViewBuilder로 유추(infer)하지 않기 때문에 @ViewBuilder를 명시적으로 넣어줘야한다.
+     */
     var contentView: some View {
-        switch viewModel.phase {
-        case .notRequested:
-            PlaceholderView()
+        switch viewModel.phase { // 뷰의 상태에 따라서
+        case .notRequested: // 아직 요청하지 않은 상태면
+            PlaceholderView() // 기본 뷰를 넣어주고
                 .onAppear {
-                    viewModel.send(action: .load)
+                    viewModel.send(action: .load) // load 액션 실행
                 }
-        case .loading:
-            LoadingView()
-        case .success:
-            loadedView
-                .toolbar {
+        case .loading: // 로딩중이라면
+            LoadingView() // 로딩뷰를 띄워주고
+        case .success: // 성공했다면
+            loadedView // 성공했을 때 나온 뷰에
+                .toolbar { // 툴바에 이미지 및 버튼 추가
                     Image("bookmark")
                     Image("notifications")
                     Image("person_add")
@@ -46,8 +51,8 @@ struct HomeView: View {
                         Image("settings")
                     }
                 }
-        case .fail:
-            ErrorView()
+        case .fail: // 실패했다면
+            ErrorView() // 에러뷰 반환
         }
     }
     
@@ -66,14 +71,14 @@ struct HomeView: View {
             .padding(.horizontal, 30)
             
             //TODO: 친구 목록
-            if viewModel.users.isEmpty {
+            if viewModel.users.isEmpty { // 친구 목록이 비어있다면
                 Spacer(minLength: 89)
-                emptyView
-            } else {
-                LazyVStack {
+                emptyView // 엠티뷰를 띄워주고
+            } else { // 아니라면
+                LazyVStack { // LazyV(H)Stack은 테이블 view와 마찬가지로 뷰를 recycling할 가능성이 높습니다.
                     ForEach(viewModel.users, id: \.id) { user in
                         Button {
-                            viewModel.send(action: .presentOtherProfileView(user.id))
+                            viewModel.send(action: .presentOtherProfileView(user.id)) // 버튼을 누르면 다른 유저의 프로필 뷰를 띄움
                         } label: {
                             HStack(spacing: 8) {
                                 Image("person")
@@ -112,7 +117,7 @@ struct HomeView: View {
                 .clipShape(Circle())
         }
         .padding(.horizontal, 30)
-        .onTapGesture {
+        .onTapGesture { // 프로필뷰를 누르면 본인 프로필 뷰를 볼 수 있음
             viewModel.send(action: .presentMyProfileView)
         }
     }
@@ -147,7 +152,7 @@ struct HomeView: View {
             .font(.system(size: 16))
             .padding(.bottom, 30)
             
-            Button {
+            Button { // 친구추가 버튼을 누르면 친구 요청을 하는 메소드를 호출함 (자세한건 뷰모델에서!)
                 viewModel.send(action: .requestContact)
             } label: {
                 Text("친구추가")
