@@ -14,6 +14,7 @@ protocol UserServiceType {
     func getUser(userId: String) -> AnyPublisher<User, ServiceError> // 유저의 정보를 가져온다
     func getUser(userId: String) async throws -> User
     func updateUserDescription(userId: String, description: String) async throws
+    func updateProfileURL(userId: String, urlString: String) async throws
     func loadUsers(id: String) -> AnyPublisher<[User], ServiceError> // 유저들의 정보를 가져온다
 }
 
@@ -54,6 +55,10 @@ class UserService: UserServiceType {
         try await dbRepository.updateUser(userId: userId, key: "description", value: description)
     }
     
+    func updateProfileURL(userId: String, urlString: String) async throws {
+        try await dbRepository.updateUser(userId: userId, key: "profilURL", value: urlString)
+    }
+    
     func loadUsers(id: String) -> AnyPublisher<[User], ServiceError> {
         dbRepository.loadUsers()
             .map { $0
@@ -83,6 +88,8 @@ class StubUserService: UserServiceType {
     }
     
     func updateUserDescription(userId: String, description: String) async throws {}
+    
+    func updateProfileURL(userId: String, urlString: String) async throws {}
     
     func loadUsers(id: String) -> AnyPublisher<[User], ServiceError> {
         Just([.stub1, .stub2]).setFailureType(to: ServiceError.self).eraseToAnyPublisher()

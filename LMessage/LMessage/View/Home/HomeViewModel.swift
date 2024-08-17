@@ -16,6 +16,7 @@ class HomeViewModel: ObservableObject {
         case presentMyProfileView
         case presentOtherProfileView(String)
         case requestContact
+        case goToChat(User)
     }
     
     @Published var myUser: User? // 내 정보
@@ -25,10 +26,12 @@ class HomeViewModel: ObservableObject {
     
     var userId: String // 유저 아이디
     private var container: DIContainer
+    private var navigationRouter: NavigationRouter
     private var subscriptions = Set<AnyCancellable>()
     
-    init(container: DIContainer, userId: String) {
+    init(container: DIContainer, navigationRouter: NavigationRouter, userId: String) {
         self.container = container
+        self.navigationRouter = navigationRouter
         self.userId = userId
     }
     
@@ -76,7 +79,18 @@ class HomeViewModel: ObservableObject {
             
         case let .presentOtherProfileView(userId): // 특정 다른 유저의 뷰를 모달로 띄우기 위해서 modalDestination 값을 변경
             modalDestination = .otherProfile(userId)
+        
+        case let .goToChat(otherUser):
+            // ChatRooms/myUserId/otherUserId
             
+            container.services.chatRoomService.createChatRoomIfNeeded(myUserId: userId, otherUserId: otherUser.id, otherUserName: otherUser.name)
+                .sink { completion in
+                    
+                } receiveValue: { [weak self] chatRoom in
+                    //TODO: 채팅뷰로 navigation
+                    self?.navigationRouter.push(to: .chat)
+                }.store(in: &subscriptions)
+            return
         }
     }
 }

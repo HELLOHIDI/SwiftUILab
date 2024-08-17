@@ -14,8 +14,11 @@ struct LMessageApp: App {
     
     var body: some Scene {
         WindowGroup {
-            AuthenticationView(authViewModel: .init(container: container))
-                .environmentObject(container)
+            AuthenticationView(
+                authViewModel: .init(container: container),
+                navigationRouter: .init()
+            )
+            .environmentObject(container)
         }
     }
 }

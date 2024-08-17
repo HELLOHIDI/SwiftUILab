@@ -1,18 +1,18 @@
 //
-//  OtherProfileView.swift
+//  SearchView.swift
 //  LMessage
 //
-//  Created by 류희재 on 8/12/24.
+//  Created by 류희재 on 8/17/24.
 //
 
 import SwiftUI
 
-struct OtherProfileView: View {
+struct SearchView: View {
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
 #Preview {
-    OtherProfileView()
+    SearchView()
 }
