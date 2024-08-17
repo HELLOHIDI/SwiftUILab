@@ -24,6 +24,7 @@ class DiskStorage: DiskStorageType {
         createDirectory()
     }
     
+    // 캐시없다면 만들어줘줘
     func createDirectory() {
         guard !fileManager.fileExists(atPath: directoryURL.path()) else { return }
         

@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// 네비게이션을 관리하는 부분
 class NavigationRouter: ObservableObject {
     @Published var destination: [NavigationDestination] = []
     

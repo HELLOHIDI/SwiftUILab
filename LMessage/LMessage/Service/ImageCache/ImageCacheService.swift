@@ -35,7 +35,7 @@ class ImageCacheService: ImageCacheServiceType {
                 if let image {
                     return Just(image).eraseToAnyPublisher()
                 } else {
-                    //TODO:
+                    // 캐시에 없으면 disk storage에서 가져온다
                     return self.imageWithDiskCache(for: key)
                 }
             }.eraseToAnyPublisher()
@@ -58,15 +58,15 @@ class ImageCacheService: ImageCacheServiceType {
             }
         }
         .flatMap { image -> AnyPublisher<UIImage?,Never> in
-            if let image {
+            if let image { // disk storage에 이미지가 존재한다면
                 return Just(image).eraseToAnyPublisher()
                     .handleEvents(receiveOutput: { [weak self] image in
                         guard let image else { return }
-                        self?.store(for: key, image: image, toDisk: false)
+                        self?.store(for: key, image: image, toDisk: false) // 해당 사진을 캐시에 저장시켜준다
                     })
                     .eraseToAnyPublisher()
             } else {
-                //TODO: network
+                // 없다면 서버통신 고고링
                 return self.remoteImage(for: key)
             }
         }
@@ -76,12 +76,12 @@ class ImageCacheService: ImageCacheServiceType {
     func remoteImage(for urlString: String) -> AnyPublisher<UIImage?, Never> {
         URLSession.shared.dataTaskPublisher(for: URL(string: urlString)!)
             .map { data, _ in
-                UIImage(data: data)
+                UIImage(data: data) // 서버통신을 통해서 이미지를 받아오면
             }
             .replaceError(with: nil)
             .handleEvents(receiveOutput: { [weak self] image in
                 guard let image else { return }
-                self?.store(for: urlString, image: image, toDisk: true)
+                self?.store(for: urlString, image: image, toDisk: true) // 해당 이미지를 캐시와 disk에 저장시켜준다
             })
             .eraseToAnyPublisher()
     }

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// 도착지에 맞게 분기처리를 도와주는 뷰
 struct NavigationRoutingView: View {
     @State var destination: NavigationDestination
     var body: some View {

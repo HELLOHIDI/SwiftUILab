@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// 캐싱된 이미지를 보여주는 뷰
 struct URLImageView: View {
     @EnvironmentObject var container: DIContainer
     
@@ -38,6 +39,7 @@ fileprivate struct URLInnerImageView: View {
         UIImage(named: placeholderName) ?? UIImage()
     }
     
+    // 이미지를 로드 햇는데 있으면 해당 이미지를 아니면 placeholder 이미지를 띄운다
     var body: some View {
         Image(uiImage: viewModel.loadedImage ?? placeholderImage)
             .resizable()
