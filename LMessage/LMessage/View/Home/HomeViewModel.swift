@@ -23,7 +23,7 @@ class HomeViewModel: ObservableObject {
     @Published var phase: Phase = .notRequested // 서버통신에 따른 상태
     @Published var modalDestination: HomeModalDestination?
     
-    private var userId: String // 유저 아이디
+    var userId: String // 유저 아이디
     private var container: DIContainer
     private var subscriptions = Set<AnyCancellable>()
     

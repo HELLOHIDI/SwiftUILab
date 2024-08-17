@@ -12,6 +12,8 @@ import FirebaseDatabase
 protocol UserDBRepositoryType {
     func addUser(_ object: UserObject) -> AnyPublisher<Void, DBError> // 유저를 추가한다
     func getUser(userId: String) -> AnyPublisher<UserObject, DBError> // 유저 정보를 가져온다
+    func getUser(userId: String) async throws -> UserObject
+    func updateUser(userId: String, key: String, value: Any) async throws
     func loadUsers() -> AnyPublisher<[UserObject], DBError> // 유저들의 정보를 가져온다
     func addUserAfterContact(users: [UserObject]) -> AnyPublisher<Void, DBError> // 연락처 연동 후 유저들을 추가한다
 }
@@ -68,9 +70,23 @@ class UserDBRepository: UserDBRepositoryType {
         }.eraseToAnyPublisher()
     }
     
+    func getUser(userId: String) async throws -> UserObject {
+        guard let value = try await self.db.child(DBKey.Users).child(userId).getData().value else {
+            throw DBError.emptyValue
+        }
+        
+        let data = try JSONSerialization.data(withJSONObject: value)
+        let userObject = try JSONDecoder().decode(UserObject.self, from: data)
+        return userObject
+    }
+    
+    func updateUser(userId: String, key: String, value: Any) async throws {
+        try await self.db.child(DBKey.Users).child(userId).child(key).setValue(value)
+    }
+    
     func loadUsers() -> AnyPublisher<[UserObject], DBError> {
         Future<Any?,DBError> { [weak self] promise in
-            self?.db.child(DBKey.Users).getData { error, snapshot in
+            self?.db.child(DBKey.Users).getData { error, snapshot in // User 유저의 정보를 가져온다
                 if let error {
                     promise(.failure(DBError.error(error)))
                 } else if snapshot?.value is NSNull {
@@ -81,10 +97,10 @@ class UserDBRepository: UserDBRepositoryType {
             }
         }
         .flatMap { value in
-            if let dic = value as? [String: [String:Any]] {
+            if let dic = value as? [String: [String:Any]] { // value가 [String: [String:Any]] 타입의 딕셔너리로 캐스팅될 수 있는지 확인
                 return Just(dic)
-                    .tryMap { try JSONSerialization.data(withJSONObject: $0)}
-                    .decode(type: [String : UserObject].self, decoder: JSONDecoder())
+                    .tryMap { try JSONSerialization.data(withJSONObject: $0) } // dic 딕셔너리를 JSON 데이터로 변환
+                    .decode(type: [String : UserObject].self, decoder: JSONDecoder()) // JSON 데이터를 [String: UserObject] 타입의 딕셔너리로 디코딩
                     .map { $0.values.map { $0 as UserObject } }
                     .mapError { DBError.error($0)}
                     .eraseToAnyPublisher()
@@ -98,13 +114,6 @@ class UserDBRepository: UserDBRepositoryType {
     }
     
     func addUserAfterContact(users: [UserObject]) -> AnyPublisher<Void, DBError> {
-        /*
-         Users/
-         user_id: [String: Any]
-         user_id: [String: Any]
-         user_id: [String: Any]
-         */
-        
         Publishers.Zip(users.publisher, users.publisher)
             .compactMap { origin, converted in
                 if let converted = try? JSONEncoder().encode(converted) {
