@@ -9,6 +9,6 @@ import Foundation
 
 /// 네비게이션  도착지에 관련된  enum
 enum NavigationDestination: Hashable {
-    case chat
+    case chat(chatRoomId: String, myUserId: String, otherUserId: String)
     case search
 }

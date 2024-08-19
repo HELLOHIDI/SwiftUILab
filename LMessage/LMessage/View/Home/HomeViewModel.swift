@@ -60,11 +60,11 @@ class HomeViewModel: ObservableObject {
                 .flatMap { users in // 잘 가져오게되었다면
                     self.container.services.userService.addUserAfterContact(users: users) //파이어베이스의 해당 유저들을 등록을 시켜준다
                 }
-                //TODO: Load
+            //TODO: Load
                 .flatMap { _ in // 파이어베이스에 잘 등록이 되었다면
                     self.container.services.userService.loadUsers(id: self.userId) // 해당 유저들을 파이어베이스에서 가져와서
                 }
-                // 아래는 loadUsers와 동일하다
+            // 아래는 loadUsers와 동일하다
                 .sink { [weak self] completion in
                     if case .failure = completion {
                         self?.phase = .fail
@@ -79,7 +79,7 @@ class HomeViewModel: ObservableObject {
             
         case let .presentOtherProfileView(userId): // 특정 다른 유저의 뷰를 모달로 띄우기 위해서 modalDestination 값을 변경
             modalDestination = .otherProfile(userId)
-        
+            
         case let .goToChat(otherUser):
             // ChatRooms/myUserId/otherUserId
             
@@ -88,7 +88,13 @@ class HomeViewModel: ObservableObject {
                     
                 } receiveValue: { [weak self] chatRoom in
                     //TODO: 채팅뷰로 navigation
-                    self?.navigationRouter.push(to: .chat)
+                    guard let self else { return }
+                    self.navigationRouter.push(to: .chat(
+                        chatRoomId: chatRoom.chatRoomId,
+                        myUserId: self.userId,
+                        otherUserId: otherUser.id
+                    )
+                    )
                 }.store(in: &subscriptions)
             return
         }
